@@ -1,0 +1,48 @@
+apiVersion: run.googleapis.com/v1
+kind: WorkerPool
+metadata:
+  annotations:
+    run.googleapis.com/manualInstanceCount: '1'
+    run.googleapis.com/scalingMode: manual
+  labels:
+    cloud.googleapis.com/location: asia-south1
+    run.googleapis.com/satisfiesPzs: 'true'
+  name: ticket-agent-worker
+  namespace: '1032427393623'
+spec:
+  instanceSplits:
+  - latestRevision: true
+    percent: 100
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/cloudsql-instances: support-ticket-agent-505519:asia-south1:support-ticket-db
+        run.googleapis.com/execution-environment: gen2
+        run.googleapis.com/network-interfaces: '[{"network":"default","subnetwork":"default"}]'
+        run.googleapis.com/vpc-access-egress: private-ranges-only
+      labels:
+        client.knative.dev/nonce: 1f990191-8112-498d-ab67-8ffc6bec7254
+    spec:
+      containerConcurrency: 0
+      containers:
+      - args:
+        - -A app.tasks:celery_app worker --loglevel=INFO
+        command:
+        - celery
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: DATABASE_URL
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              key: latest
+              name: REDIS_URL
+        image: asia-south1-docker.pkg.dev/support-ticket-agent-505519/support-ticket/ticket-agent-worker:v1
+        resources:
+          limits:
+            cpu: '2'
+            memory: 4Gi
+      serviceAccountName: 1032427393623-compute@developer.gserviceaccount.com

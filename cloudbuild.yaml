@@ -1,0 +1,45 @@
+steps:
+  - id: build-backend
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - --file
+      - backend/Dockerfile
+      - --tag
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/support-ticket-api:$BUILD_ID
+      - backend
+
+  - id: build-frontend
+    name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - --file
+      - frontend/Dockerfile
+      - --tag
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/support-ticket-dashboard:$BUILD_ID
+      - frontend
+
+  - id: push-backend
+    name: gcr.io/cloud-builders/docker
+    waitFor: [build-backend]
+    args:
+      - push
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/support-ticket-api:$BUILD_ID
+
+  - id: push-frontend
+    name: gcr.io/cloud-builders/docker
+    waitFor: [build-frontend]
+    args:
+      - push
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/support-ticket-dashboard:$BUILD_ID
+
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/support-ticket-api:$BUILD_ID
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/support-ticket-dashboard:$BUILD_ID
+
+substitutions:
+  _REGION: us-central1
+  _REPOSITORY: support-ticket-agent
+
+options:
+  logging: CLOUD_LOGGING_ONLY

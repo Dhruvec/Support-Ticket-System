@@ -1,0 +1,70 @@
+[
+    {
+        "id": "account-password-reset",
+        "category": "account",
+        "question": "How do I reset a forgotten password?",
+        "answer": "Open the sign-in page, select Forgot password, enter your account email, and use the time-limited reset link sent to that address. If no message arrives within ten minutes, check spam and confirm that the email matches your account.",
+        "aliases": [
+            "cannot log in",
+            "forgot password",
+            "password reset",
+            "account access"
+        ]
+    },
+    {
+        "id": "account-locked",
+        "category": "account",
+        "question": "What should I do when my account is locked?",
+        "answer": "Wait fifteen minutes before trying again, then reset your password from the sign-in page. If the account remains locked after a successful reset, support must verify the account before restoring access.",
+        "aliases": [
+            "too many login attempts",
+            "locked out",
+            "account disabled"
+        ]
+    },
+    {
+        "id": "billing-invoice-copy",
+        "category": "billing",
+        "question": "Where can I download an invoice?",
+        "answer": "Sign in, open Billing, select Invoices, choose the billing period, and select Download PDF. Only account owners and billing administrators can access invoices.",
+        "aliases": [
+            "receipt",
+            "billing statement",
+            "invoice pdf"
+        ]
+    },
+    {
+        "id": "billing-update-payment",
+        "category": "billing",
+        "question": "How do I update a payment method?",
+        "answer": "An account owner can open Billing, select Payment method, choose Update, and enter the new card details. The new method is used for the next scheduled charge.",
+        "aliases": [
+            "change credit card",
+            "expired card",
+            "payment details"
+        ]
+    },
+    {
+        "id": "technical-clear-cache",
+        "category": "technical_support",
+        "question": "How do I resolve a page that will not load correctly?",
+        "answer": "Refresh the page, sign out and back in, then clear site data for the application domain. If the issue continues, try a supported browser with extensions disabled and include the error text when contacting support.",
+        "aliases": [
+            "blank page",
+            "page error",
+            "browser cache",
+            "site not loading"
+        ]
+    },
+    {
+        "id": "technical-api-key",
+        "category": "technical_support",
+        "question": "Where can I create or rotate an API key?",
+        "answer": "An administrator can open Settings, select API keys, and choose Create key. To rotate a key, create the replacement first, update dependent services, verify traffic, and then revoke the old key.",
+        "aliases": [
+            "api token",
+            "credentials",
+            "rotate secret"
+        ]
+    }
+]

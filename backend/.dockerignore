@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+data/faq_index/
+*.db
+*.sqlite3
+tests/
+pytest.ini
+.env
+.git/
+.gitignore
