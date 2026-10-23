@@ -4,6 +4,8 @@ import logging
 from pathlib import Path
 
 import pytest
+from sqlalchemy import Engine, create_engine, inspect, text
+
 from alembic import command
 from app.database import models  # noqa: F401
 from app.database.database import Base
@@ -12,7 +14,6 @@ from app.database.migrate import (
     build_alembic_config,
     migrate_database,
 )
-from sqlalchemy import Engine, create_engine, inspect, text
 
 _EXPECTED_TABLES = {
     "agent_decisions",

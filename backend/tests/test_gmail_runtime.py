@@ -1,6 +1,10 @@
 from datetime import UTC, datetime
 
 import pytest
+from cryptography.fernet import Fernet
+from fastapi import HTTPException
+from fastapi.testclient import TestClient
+
 from app import tasks
 from app.api.gmail_auth import _decode_state, _encode_state
 from app.config import Settings
@@ -8,9 +12,6 @@ from app.database.gmail_mailbox_store import GmailMailboxStore
 from app.integrations import gmail, gmail_runtime
 from app.main import create_app
 from app.schemas.email import IncomingEmail
-from cryptography.fernet import Fernet
-from fastapi import HTTPException
-from fastapi.testclient import TestClient
 
 
 def oauth_settings(database_url: str, encryption_key: str) -> Settings:

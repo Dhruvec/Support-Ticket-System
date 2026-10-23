@@ -4,6 +4,7 @@ from pathlib import Path
 
 import numpy as np
 import pytest
+
 from app.knowledge.retriever import FAQRetriever
 
 

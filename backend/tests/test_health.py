@@ -1,14 +1,15 @@
 from collections.abc import Callable, Generator
 from unittest.mock import Mock
 
-from app.api.health import get_redis_checker
-from app.config import Settings
-from app.database.database import get_db
-from app.main import create_app
 from fastapi.testclient import TestClient
 from redis.exceptions import RedisError
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
+
+from app.api.health import get_redis_checker
+from app.config import Settings
+from app.database.database import get_db
+from app.main import create_app
 
 
 def build_health_client(

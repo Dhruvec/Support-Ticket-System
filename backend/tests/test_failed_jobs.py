@@ -1,13 +1,14 @@
 from collections.abc import Callable
 from typing import Annotated
 
+from fastapi import Depends
+from fastapi.testclient import TestClient
+from sqlalchemy.orm import Session, sessionmaker
+
 from app.api.failed_jobs import get_failed_job_service
 from app.database.database import get_db
 from app.database.models import FailedJob, OutboundDelivery, OutboundDeliveryStatus
 from app.services.failed_job_service import FailedJobService
-from fastapi import Depends
-from fastapi.testclient import TestClient
-from sqlalchemy.orm import Session, sessionmaker
 
 _OPERATOR_KEY = "operator-key-with-at-least-thirty-two-characters"
 

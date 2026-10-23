@@ -1,7 +1,8 @@
-from app.database.models import AgentDecision, Ticket, TicketHistory
 from fastapi.testclient import TestClient
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, sessionmaker
+
+from app.database.models import AgentDecision, Ticket, TicketHistory
 
 TICKET_PAYLOAD = {
     "customer_email": "customer@example.com",

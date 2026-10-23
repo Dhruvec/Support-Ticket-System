@@ -1,10 +1,11 @@
 from datetime import UTC, datetime
 
 import pytest
+from sqlalchemy import func, select
+
 from app.database.models import FailedJob, OutboundDelivery, OutboundDeliveryStatus
 from app.services.outbound_delivery_service import OutboundDeliveryService
 from app.services.retry_service import RetryService
-from sqlalchemy import func, select
 
 
 def create_in_progress_delivery(session, *, task_id: str = "task-1") -> OutboundDelivery:

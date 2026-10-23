@@ -1,10 +1,11 @@
 from datetime import UTC, datetime
 
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session, sessionmaker
+
 from app.database.models import Ticket, TicketHistory, TicketMessage
 from app.schemas.email import EmailClassification, IncomingEmail
 from app.services.email_ticket_service import EmailTicketService
-from sqlalchemy import func, select
-from sqlalchemy.orm import Session, sessionmaker
 
 
 def email(

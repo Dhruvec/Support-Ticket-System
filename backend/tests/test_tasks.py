@@ -3,11 +3,12 @@ from __future__ import annotations
 from typing import Any
 
 import pytest
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session, sessionmaker
+
 from app import tasks
 from app.database.models import OutboundDelivery, OutboundDeliveryStatus
 from app.services.outbound_delivery_service import OutboundDeliveryService
-from sqlalchemy import func, select
-from sqlalchemy.orm import Session, sessionmaker
 
 
 @pytest.mark.parametrize(

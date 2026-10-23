@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session, sessionmaker
+
 from app.database.models import OutboundDelivery, OutboundDeliveryStatus
 from app.services.outbound_delivery_service import (
     OPERATION_VERSION_FIELD,
@@ -8,8 +11,6 @@ from app.services.outbound_delivery_service import (
     OutboundDeliveryService,
     split_delivery_payload,
 )
-from sqlalchemy import func, select
-from sqlalchemy.orm import Session, sessionmaker
 
 
 def provider_payload(ticket_number: str = "TKT-1") -> dict[str, object]:

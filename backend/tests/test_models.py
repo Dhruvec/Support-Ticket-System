@@ -1,10 +1,11 @@
 from datetime import UTC, datetime
 
 import pytest
-from app.database.models import Ticket, TicketMessage, TicketStatus
 from sqlalchemy import inspect, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, sessionmaker
+
+from app.database.models import Ticket, TicketMessage, TicketStatus
 
 EXPECTED_TABLES = {
     "tickets",

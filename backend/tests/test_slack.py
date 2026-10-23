@@ -3,6 +3,7 @@ from typing import Self
 from urllib.error import URLError
 
 import pytest
+
 from app.integrations import slack
 from app.integrations.slack import (
     EscalationNotification,

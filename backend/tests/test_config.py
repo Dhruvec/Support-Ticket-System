@@ -1,8 +1,9 @@
 import pytest
-from app.config import Settings
-from app.main import create_app
 from cryptography.fernet import Fernet
 from sqlalchemy.engine import make_url
+
+from app.config import Settings
+from app.main import create_app
 
 
 def production_settings(**overrides: object) -> Settings:

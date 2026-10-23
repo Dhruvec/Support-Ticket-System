@@ -4,9 +4,10 @@ from collections.abc import Mapping
 from typing import Any
 
 import pytest
+from fastapi.testclient import TestClient
+
 from app import security
 from app.api import gmail_auth
-from fastapi.testclient import TestClient
 
 _OPERATOR_KEY = "operator-key-with-at-least-thirty-two-characters"
 _PUBSUB_AUDIENCE = "https://support.example.com/webhooks/gmail"

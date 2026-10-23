@@ -2,6 +2,11 @@ from datetime import UTC, datetime
 from typing import Any
 
 import pytest
+from fastapi.testclient import TestClient
+from pydantic import ValidationError
+from sqlalchemy import func, select
+from sqlalchemy.orm import Session, sessionmaker
+
 from app.agent.graph import (
     build_classification_graph,
     build_support_workflow_graph,
@@ -16,10 +21,6 @@ from app.knowledge.retriever import FAQMatch
 from app.main import create_app
 from app.schemas.email import EmailClassification, IncomingEmail
 from app.services.email_ticket_service import EmailTicketService
-from fastapi.testclient import TestClient
-from pydantic import ValidationError
-from sqlalchemy import func, select
-from sqlalchemy.orm import Session, sessionmaker
 
 
 class FakeClassifier:

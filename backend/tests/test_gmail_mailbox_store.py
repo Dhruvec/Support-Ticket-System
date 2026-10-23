@@ -1,13 +1,14 @@
 from typing import Any
 
 import pytest
+from cryptography.fernet import Fernet
+from sqlalchemy import select
+
 from app.database.gmail_mailbox_store import (
     GmailCredentialEncryptionError,
     GmailMailboxStore,
 )
 from app.database.models import GmailMailbox
-from cryptography.fernet import Fernet
-from sqlalchemy import select
 
 
 def encryption_key() -> str:

@@ -1,6 +1,8 @@
 import json
 import logging
 
+from fastapi.testclient import TestClient
+
 from app.main import create_app
 from app.observability import (
     JsonFormatter,
@@ -8,7 +10,6 @@ from app.observability import (
     reset_request_id,
     set_request_id,
 )
-from fastapi.testclient import TestClient
 
 
 def test_normalize_request_id_preserves_valid_value() -> None:
