@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from alembic.autogenerate import compare_metadata
+from alembic.config import Config
+from alembic.migration import MigrationContext
 from sqlalchemy import Engine, inspect, text
 from sqlalchemy.engine import Connection
 
 from alembic import command
-from alembic.autogenerate import compare_metadata
-from alembic.config import Config
-from alembic.migration import MigrationContext
 from app.config import get_settings
 from app.database import models  # noqa: F401
 from app.database.database import Base, build_engine
